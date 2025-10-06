@@ -1,0 +1,44 @@
+FROM python:3.13-slim-bookworm
+
+# Install Java + bash + utilities
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    openjdk-17-jdk \
+    curl \
+    bash \
+    tini \
+    procps \
+    && rm -rf /var/lib/apt/lists/*
+
+# Environment variables
+ENV SPARK_HOME=/opt/spark
+ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+ENV PATH="${JAVA_HOME}/bin:${SPARK_HOME}/bin:${SPARK_HOME}/sbin:${PATH}"
+ENV SPARK_MASTER_PORT=7077
+ENV SPARK_MASTER_WEBUI_PORT=8080
+
+# Build args
+ARG SPARK_VERSION=3.5.5
+ARG HADOOP_VERSION=3
+ARG ICEBERG_VERSION=1.6.0
+ARG SCALA_VERSION=2.12
+
+# Download Spark
+RUN mkdir -p /opt/spark \
+    && curl -fsSL https://archive.apache.org/dist/spark/spark-${SPARK_VERSION}/spark-${SPARK_VERSION}-bin-hadoop${HADOOP_VERSION}.tgz -o /opt/spark/spark.tgz \
+    && tar -xzf /opt/spark/spark.tgz -C /opt/spark --strip-components=1 \
+    && rm /opt/spark/spark.tgz
+
+# Download Iceberg runtime JAR (full runtime for Spark 3.5 + Scala 2.12)
+RUN curl -L -o $SPARK_HOME/jars/iceberg-spark-runtime-3.5_2.12-1.6.0.jar \
+    https://repo1.maven.org/maven2/org/apache/iceberg/iceberg-spark-runtime-3.5_2.12/1.6.0/iceberg-spark-runtime-3.5_2.12-1.6.0.jar
+
+WORKDIR $SPARK_HOME
+
+# Copy Spark config
+COPY ./spark-defaults.conf $SPARK_HOME/conf/
+
+# Expose ports
+EXPOSE 7077 8080
+
+# Use tini as init system
+ENTRYPOINT ["/usr/bin/tini", "--"]

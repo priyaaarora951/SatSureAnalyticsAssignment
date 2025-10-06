@@ -1,0 +1,64 @@
+[2025-10-06T05:58:04.594+0000] {processor.py:186} INFO - Started process (PID=32) to work on /opt/airflow/dags/device_config_dag.py
+[2025-10-06T05:58:04.667+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/device_config_dag.py for tasks to queue
+[2025-10-06T05:58:04.984+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:58:04.960+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T05:58:17.011+0000] {processor.py:925} INFO - DAG(s) 'device_config_pipeline' retrieved from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T05:58:17.156+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:58:17.154+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T05:58:17.376+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/device_config_dag.py took 15.002 seconds
+[2025-10-06T05:58:47.993+0000] {processor.py:186} INFO - Started process (PID=68) to work on /opt/airflow/dags/device_config_dag.py
+[2025-10-06T05:58:48.006+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/device_config_dag.py for tasks to queue
+[2025-10-06T05:58:48.177+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:58:48.165+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T05:58:56.900+0000] {processor.py:925} INFO - DAG(s) 'device_config_pipeline' retrieved from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T05:58:58.014+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:58:58.012+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T05:58:58.671+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/device_config_dag.py took 10.788 seconds
+[2025-10-06T05:59:29.061+0000] {processor.py:186} INFO - Started process (PID=104) to work on /opt/airflow/dags/device_config_dag.py
+[2025-10-06T05:59:29.064+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/device_config_dag.py for tasks to queue
+[2025-10-06T05:59:29.071+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:59:29.069+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T05:59:30.769+0000] {processor.py:925} INFO - DAG(s) 'device_config_pipeline' retrieved from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T05:59:33.655+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:59:33.643+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T05:59:34.485+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/device_config_dag.py took 5.447 seconds
+[2025-10-06T06:00:05.274+0000] {processor.py:186} INFO - Started process (PID=131) to work on /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:00:05.279+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/device_config_dag.py for tasks to queue
+[2025-10-06T06:00:05.286+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:00:05.285+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:00:07.248+0000] {processor.py:925} INFO - DAG(s) 'device_config_pipeline' retrieved from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:00:07.436+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:00:07.435+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T06:00:07.985+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/device_config_dag.py took 2.741 seconds
+[2025-10-06T06:00:38.895+0000] {processor.py:186} INFO - Started process (PID=158) to work on /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:00:38.907+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/device_config_dag.py for tasks to queue
+[2025-10-06T06:00:38.916+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:00:38.915+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:00:38.895+0000] {processor.py:925} INFO - DAG(s) 'device_config_pipeline' retrieved from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:00:39.213+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:00:39.212+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T06:00:39.485+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/device_config_dag.py took 1.898 seconds
+[2025-10-06T06:01:09.778+0000] {processor.py:186} INFO - Started process (PID=185) to work on /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:01:09.782+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/device_config_dag.py for tasks to queue
+[2025-10-06T06:01:09.790+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:01:09.789+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:01:11.337+0000] {processor.py:925} INFO - DAG(s) 'device_config_pipeline' retrieved from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:01:11.580+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:01:11.578+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T06:01:12.050+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/device_config_dag.py took 2.287 seconds
+[2025-10-06T06:01:42.241+0000] {processor.py:186} INFO - Started process (PID=212) to work on /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:01:42.245+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/device_config_dag.py for tasks to queue
+[2025-10-06T06:01:42.255+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:01:42.254+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:01:43.699+0000] {processor.py:925} INFO - DAG(s) 'device_config_pipeline' retrieved from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:01:43.884+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:01:43.883+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T06:01:44.081+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/device_config_dag.py took 1.863 seconds
+[2025-10-06T06:02:14.543+0000] {processor.py:186} INFO - Started process (PID=239) to work on /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:02:14.547+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/device_config_dag.py for tasks to queue
+[2025-10-06T06:02:14.559+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:02:14.555+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:02:17.067+0000] {processor.py:925} INFO - DAG(s) 'device_config_pipeline' retrieved from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:02:17.407+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:02:17.401+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T06:02:17.548+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/device_config_dag.py took 3.041 seconds
+[2025-10-06T06:02:48.012+0000] {processor.py:186} INFO - Started process (PID=258) to work on /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:02:48.048+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/device_config_dag.py for tasks to queue
+[2025-10-06T06:02:48.084+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:02:48.072+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:03:17.402+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:03:16.537+0000] {timeout.py:68} ERROR - Process timed out, PID: 258
+[2025-10-06T06:03:19.420+0000] {logging_mixin.py:190} WARNING - Exception ignored in: <function _get_module_lock.<locals>.cb at 0x7e9d4d8a0720>
+[2025-10-06T06:03:20.729+0000] {logging_mixin.py:190} WARNING - Traceback (most recent call last):
+[2025-10-06T06:03:26.368+0000] {logging_mixin.py:190} WARNING -   File "<frozen importlib._bootstrap>", line 454, in cb
+[2025-10-06T06:03:29.254+0000] {logging_mixin.py:190} WARNING -   File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/timeout.py", line 69, in handle_timeout
+[2025-10-06T06:03:32.240+0000] {logging_mixin.py:190} WARNING -     raise AirflowTaskTimeout(self.error_message)
+[2025-10-06T06:03:36.142+0000] {logging_mixin.py:190} WARNING - airflow.exceptions.AirflowTaskTimeout: DagBag import timeout for /opt/airflow/dags/device_config_dag.py after 30.0s.
+Please take a look at these docs to improve your DAG import time:
+* https://airflow.apache.org/docs/apache-airflow/2.10.4/best-practices.html#top-level-python-code
+* https://airflow.apache.org/docs/apache-airflow/2.10.4/best-practices.html#reducing-dag-complexity, PID: 258
+[2025-10-06T06:13:04.852+0000] {processor.py:186} INFO - Started process (PID=263) to work on /opt/airflow/dags/device_config_dag.py
+[2025-10-06T06:13:05.051+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/device_config_dag.py for tasks to queue
+[2025-10-06T06:13:05.473+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:13:05.209+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/device_config_dag.py

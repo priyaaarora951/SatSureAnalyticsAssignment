@@ -1,0 +1,18 @@
+# Airflow Spark provider
+apache-airflow-providers-apache-spark==3.5.0
+
+# Core Python packages for DAGs
+pandas
+pyarrow
+duckdb
+requests
+pendulum
+openpyxl
+fastparquet
+pytest
+
+# PySpark for Spark job submission
+pyspark==3.5.5
+
+# Iceberg Python client (optional if using PyIceberg for DAG logic)
+apache-iceberg

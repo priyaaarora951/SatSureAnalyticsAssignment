@@ -1,0 +1,60 @@
+[2025-10-06T05:58:04.765+0000] {processor.py:186} INFO - Started process (PID=33) to work on /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T05:58:04.851+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/telemetry_processing_dag.py for tasks to queue
+[2025-10-06T05:58:05.144+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:58:05.116+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T05:58:16.891+0000] {processor.py:925} INFO - DAG(s) 'core_telemetry_pipeline' retrieved from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T05:58:17.107+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:58:17.105+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T05:58:17.345+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/telemetry_processing_dag.py took 14.734 seconds
+[2025-10-06T05:58:17.553+0000] {processor.py:186} INFO - Started process (PID=50) to work on /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T05:58:17.555+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/telemetry_processing_dag.py for tasks to queue
+[2025-10-06T05:58:17.562+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:58:17.561+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T05:58:19.738+0000] {processor.py:925} INFO - DAG(s) 'core_telemetry_pipeline' retrieved from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T05:58:19.815+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:58:19.813+0000] {taskinstance.py:3313} ERROR - {'DAG Id': 'core_telemetry_pipeline', 'Task Id': 'ingest_telemetry', 'Run Id': 'scheduled__2024-01-01T17:30:00+00:00', 'Hostname': '159b3d08f393', 'External Executor Id': 'f5eff08d-a3d8-4d9e-b8e6-b66f6ef08473'}
+[2025-10-06T05:58:20.084+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:58:20.083+0000] {taskinstance.py:1225} INFO - Marking task as UP_FOR_RETRY. dag_id=core_telemetry_pipeline, task_id=ingest_telemetry, run_id=scheduled__2024-01-01T17:30:00+00:00, execution_date=20240101T173000, start_date=20251005T030207, end_date=20251006T055820
+[2025-10-06T05:58:20.269+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:58:20.268+0000] {processor.py:876} INFO - Executed callback for <TaskInstance: core_telemetry_pipeline.ingest_telemetry scheduled__2024-01-01T17:30:00+00:00 [up_for_retry]> in state up_for_retry
+[2025-10-06T05:58:20.403+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:58:20.401+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T05:58:21.417+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/telemetry_processing_dag.py took 3.881 seconds
+[2025-10-06T05:58:55.886+0000] {processor.py:186} INFO - Started process (PID=86) to work on /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T05:58:55.890+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/telemetry_processing_dag.py for tasks to queue
+[2025-10-06T05:58:55.898+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:58:55.897+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T05:58:59.399+0000] {processor.py:925} INFO - DAG(s) 'core_telemetry_pipeline' retrieved from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T05:58:59.501+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:58:59.499+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T05:58:59.708+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/telemetry_processing_dag.py took 3.838 seconds
+[2025-10-06T05:59:30.093+0000] {processor.py:186} INFO - Started process (PID=106) to work on /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T05:59:30.096+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/telemetry_processing_dag.py for tasks to queue
+[2025-10-06T05:59:30.102+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:59:30.101+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T05:59:35.026+0000] {processor.py:925} INFO - DAG(s) 'core_telemetry_pipeline' retrieved from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T05:59:35.311+0000] {logging_mixin.py:190} INFO - [2025-10-06T05:59:35.310+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T05:59:35.583+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/telemetry_processing_dag.py took 5.504 seconds
+[2025-10-06T06:00:06.325+0000] {processor.py:186} INFO - Started process (PID=140) to work on /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:00:06.328+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/telemetry_processing_dag.py for tasks to queue
+[2025-10-06T06:00:06.337+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:00:06.336+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:00:08.450+0000] {processor.py:925} INFO - DAG(s) 'core_telemetry_pipeline' retrieved from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:00:08.520+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:00:08.519+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T06:00:08.614+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/telemetry_processing_dag.py took 2.321 seconds
+[2025-10-06T06:00:38.928+0000] {processor.py:186} INFO - Started process (PID=159) to work on /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:00:38.945+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/telemetry_processing_dag.py for tasks to queue
+[2025-10-06T06:00:38.887+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:00:38.885+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:00:38.782+0000] {processor.py:925} INFO - DAG(s) 'core_telemetry_pipeline' retrieved from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:00:39.218+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:00:39.216+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T06:00:39.471+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/telemetry_processing_dag.py took 1.850 seconds
+[2025-10-06T06:01:09.819+0000] {processor.py:186} INFO - Started process (PID=186) to work on /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:01:09.822+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/telemetry_processing_dag.py for tasks to queue
+[2025-10-06T06:01:09.835+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:01:09.834+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:01:11.322+0000] {processor.py:925} INFO - DAG(s) 'core_telemetry_pipeline' retrieved from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:01:11.590+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:01:11.589+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T06:01:12.053+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/telemetry_processing_dag.py took 2.248 seconds
+[2025-10-06T06:01:42.275+0000] {processor.py:186} INFO - Started process (PID=213) to work on /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:01:42.278+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/telemetry_processing_dag.py for tasks to queue
+[2025-10-06T06:01:42.287+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:01:42.285+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:01:43.632+0000] {processor.py:925} INFO - DAG(s) 'core_telemetry_pipeline' retrieved from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:01:43.705+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:01:43.704+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T06:01:43.941+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/telemetry_processing_dag.py took 1.688 seconds
+[2025-10-06T06:02:14.566+0000] {processor.py:186} INFO - Started process (PID=240) to work on /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:02:14.569+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/telemetry_processing_dag.py for tasks to queue
+[2025-10-06T06:02:14.578+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:02:14.577+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:02:17.040+0000] {processor.py:925} INFO - DAG(s) 'core_telemetry_pipeline' retrieved from /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:02:17.407+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:02:17.401+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2025-10-06T06:02:17.548+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/telemetry_processing_dag.py took 3.005 seconds
+[2025-10-06T06:12:51.800+0000] {processor.py:186} INFO - Started process (PID=261) to work on /opt/airflow/dags/telemetry_processing_dag.py
+[2025-10-06T06:12:51.831+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/telemetry_processing_dag.py for tasks to queue
+[2025-10-06T06:12:51.948+0000] {logging_mixin.py:190} INFO - [2025-10-06T06:12:51.905+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/telemetry_processing_dag.py

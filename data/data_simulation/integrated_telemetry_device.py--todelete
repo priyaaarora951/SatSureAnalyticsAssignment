@@ -1,0 +1,142 @@
+import os
+import json
+import requests
+import pandas as pd
+import pyarrow as pa
+import pyarrow.parquet as pq
+import pyarrow.dataset as ds
+from datetime import datetime
+from pathlib import Path
+
+# ========== CONFIGURATION ==========
+
+BASE_PATH = "../data/raw"
+TELEM_PATH = os.path.join(BASE_PATH, "telemetry")
+STAGING_PATH = os.path.join(BASE_PATH, "staging", "telemetry")
+CONFIG_PATH = os.path.join(BASE_PATH, "config")
+
+STATION_IDS = ["USW00094728"]
+TELEM_URL_PATTERN = (
+    "https://www.ncei.noaa.gov/oa/global-historical-climatology-network/hourly/access/"
+    "by-year/2024/parquet/GHCNh_{station}_2024.parquet"
+)
+
+# ========== UTILITY FUNCTIONS ==========
+
+def ensure_dir(path: str):
+    Path(path).mkdir(parents=True, exist_ok=True)
+
+def download_parquet(url: str, out_path: str):
+    """Download via HTTP streaming; raise on HTTP errors."""
+    print(f"Downloading {url} -> {out_path}")
+    resp = requests.get(url, stream=True)
+    resp.raise_for_status()
+    ensure_dir(os.path.dirname(out_path))
+    with open(out_path, "wb") as f:
+        for chunk in resp.iter_content(chunk_size=64 * 1024):
+            if chunk:
+                f.write(chunk)
+
+def repartition_parquet(src_parquet: str, dest_base: str):
+    """Repartition the Parquet file by date and hour."""
+    print("Reading", src_parquet)
+    dataset = ds.dataset(src_parquet, format="parquet")
+    scanner = dataset.scanner(batch_size=500_000)
+
+    for batch in scanner.to_batches():
+        table = pa.Table.from_batches([batch])
+        df = table.to_pandas()
+
+        if "DATE" in df.columns:
+            df["timestamp"] = pd.to_datetime(df["DATE"])
+        elif "date_time" in df.columns:
+            df["timestamp"] = pd.to_datetime(df["date_time"])
+        elif "timestamp" in df.columns:
+            df["timestamp"] = pd.to_datetime(df["timestamp"])
+        else:
+            raise ValueError(f"No recognizable timestamp column in {src_parquet}, cols: {df.columns}")
+
+        df["date"] = df["timestamp"].dt.strftime("%Y-%m-%d")
+        df["hour"] = df["timestamp"].dt.strftime("%H")
+
+        for (dt, hh), sub in df.groupby(["date", "hour"]):
+            out_dir = os.path.join(dest_base, dt, hh)
+            ensure_dir(out_dir)
+            base = Path(src_parquet).stem
+            out_fname = f"{base}_{dt}T{hh}.parquet"
+            out_path = os.path.join(out_dir, out_fname)
+            sub2 = sub.drop(columns=["date", "hour"])
+            tbl2 = pa.Table.from_pandas(sub2)
+            pq.write_table(tbl2, out_path)
+
+    print("Finished repartitioning for", src_parquet)
+
+def load_device_config(date_str: str):
+    """Load device configuration metadata."""
+    config_file = os.path.join(CONFIG_PATH, date_str, "devices.json")
+    with open(config_file, 'r') as f:
+        return json.load(f)
+
+def enrich_telemetry_with_config(telemetry_df, device_configs):
+    """Enrich telemetry data with device configuration metadata."""
+    device_config_dict = {device['device_id']: device for device in device_configs}
+    telemetry_df['device_config'] = telemetry_df['station_id'].map(device_config_dict)
+    return telemetry_df
+
+def save_enriched_data(telemetry_df, date_str, hour_str):
+    """Save the enriched telemetry data to Parquet."""
+    out_dir = os.path.join(TELEM_PATH, date_str, hour_str)
+    ensure_dir(out_dir)
+    out_fname = f"enriched_data_{date_str}T{hour_str}.parquet"
+    out_path = os.path.join(out_dir, out_fname)
+    enriched_table = pa.Table.from_pandas(telemetry_df)
+    pq.write_table(enriched_table, out_path)
+
+# ========== MAIN SCRIPT ==========
+
+def main():
+    ensure_dir(TELEM_PATH)
+    ensure_dir(STAGING_PATH)
+
+    for station in STATION_IDS:
+        url = TELEM_URL_PATTERN.format(station=station)
+        local = os.path.join(STAGING_PATH, f"GHCNh_{station}_2024.parquet")
+        try:
+            download_parquet(url, local)
+        except Exception as e:
+            print("Failed downloading for station", station, ":", e)
+            continue
+
+        try:
+            repartition_parquet(local, TELEM_PATH)
+        except Exception as e:
+            print("Error repartitioning file", local, ":", e)
+
+    # Load device configuration metadata
+    today = datetime.now().strftime('%Y-%m-%d')
+    device_configs = load_device_config(today)
+
+    # Process each partitioned telemetry file
+    for date_str in os.listdir(TELEM_PATH):
+        date_dir = os.path.join(TELEM_PATH, date_str)
+        if os.path.isdir(date_dir):
+            for hour_str in os.listdir(date_dir):
+                hour_dir = os.path.join(date_dir, hour_str)
+                if os.path.isdir(hour_dir):
+                    for file_name in os.listdir(hour_dir):
+                        if file_name.endswith(".parquet"):
+                            file_path = os.path.join(hour_dir, file_name)
+                            print(f"Processing {file_path}")
+                            table = pq.read_table(file_path)
+                            telemetry_df = table.to_pandas()
+
+                            # Enrich telemetry data with device configuration
+                            enriched_df = enrich_telemetry_with_config(telemetry_df, device_configs)
+
+                            # Save the enriched data
+                            save_enriched_data(enriched_df, date_str, hour_str)
+
+    print("All done.")
+
+if __name__ == "__main__":
+    main()

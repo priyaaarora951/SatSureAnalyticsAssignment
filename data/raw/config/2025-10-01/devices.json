@@ -1,0 +1,37 @@
+[
+    {
+        "device_id": "device_001",
+        "sensor_type": "temperature",
+        "device_type": "Zone A",
+        "scale": 1.0,
+        "offset": 0.5
+    },
+    {
+        "device_id": "device_001",
+        "sensor_type": "humidity",
+        "device_type": "Zone A",
+        "scale": 1.0,
+        "offset": 2.0
+    },
+    {
+        "device_id": "device_001",
+        "sensor_type": "pressure",
+        "device_type": "Zone A",
+        "scale": 1.0,
+        "offset": -1.0
+    },
+    {
+        "device_id": "device_002",
+        "sensor_type": "temperature",
+        "device_type": "Zone B",
+        "scale": 1.0,
+        "offset": 0.3
+    },
+    {
+        "device_id": "device_002",
+        "sensor_type": "humidity",
+        "device_type": "Zone B",
+        "scale": 1.0,
+        "offset": 1.5
+    }
+]
