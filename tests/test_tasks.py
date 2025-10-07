@@ -6,6 +6,7 @@ import pytest
 import pyarrow as pa
 import pyarrow.parquet as pq
 from unittest.mock import MagicMock
+from datetime import datetime
 
 # --------------------------------------------------------------------
 # MOCK Airflow before importing Ingestion (for Windows)
@@ -147,3 +148,36 @@ def test_pipeline_end_to_end(tmp_data_dir, ingestion_fixture, transformation_fix
     ti.xcom_pull.return_value = last_run
     ts = ingestion.checkpointing(ti)
     assert ts == last_run
+
+# --------------------------------------------------------------------
+# Test: IcebergStorage class
+# --------------------------------------------------------------------
+@pytest.fixture
+def iceberg_storage():
+    from dags.tasks.iceberg_storage import IcebergStorage
+    return IcebergStorage()
+
+def test_store_processed_data(iceberg_storage, caplog):
+    # Prepare sample DataFrame
+    data = {
+        "device_id": ["1", "2"],
+        "timestamp": [datetime(2024, 1, 1, 0, 5), datetime(2024, 1, 1, 0, 10)],
+        "sensor_type": ["temperature", "humidity"],
+        "raw_value": [22.5, 60.0],
+        "calibrated_value": [22.5, 60.0],
+        "event_date": [datetime(2024, 1, 1).date(), datetime(2024, 1, 1).date()],
+        "device_type": ["sensor", "sensor"]
+    }
+    df = pd.DataFrame(data)
+
+    # Store processed data
+    stats = iceberg_storage.store_processed_data(df)
+
+    # Assertions
+    assert stats["added_files"] > 0
+    assert stats["added_records"] == len(df)
+    assert stats["total_data_files"] > 0
+
+    # Check logs
+    assert "Upsert completed" in caplog.text
+    assert "Compaction successful" in caplog.text

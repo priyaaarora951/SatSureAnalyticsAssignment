@@ -1,10 +1,33 @@
-FROM apache/airflow:2.10.4
+# Use a valid base image tag
+FROM apache/airflow:2.5.1-python3.10
 
-# Upgrade pip and install Spark provider
-RUN pip install --upgrade pip \
-    && pip install --default-timeout=120 --retries=5 apache-airflow-providers-apache-spark
+# Get root privileges for system-level installs
+USER root
 
-# Install Python dependencies required by DAGs
+# Install system dependencies (if your DAGs need them)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
+        gcc \
+        g++ \
+        libssl-dev \
+        libffi-dev \
+        python3-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Switch back to the Airflow user (recommended for pip installs)
+USER airflow
+
+# Upgrade pip, setuptools, wheel, and packaging to recent versions
+RUN pip install --upgrade pip setuptools wheel packaging
+
+# Pre-install a compatible PySpark version before the Airflow provider
+RUN pip install pyspark==3.5.3
+
+# Now safely install the Airflow Spark provider
+RUN pip install apache-airflow-providers-apache-spark==5.3.2
+
+# Install your DAG-level dependencies
 RUN pip install --no-cache-dir \
     pandas \
     pyarrow \
@@ -14,5 +37,4 @@ RUN pip install --no-cache-dir \
     openpyxl \
     fastparquet \
     pytest \
-    apache-iceberg \
-    pyspark
+    pyiceberg==0.10.0
